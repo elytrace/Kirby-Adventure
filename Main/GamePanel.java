@@ -107,6 +107,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
         if(player.getRectangle().intersects(diamond.getRectangle())) {  
             diamond.setX(0);
             diamond.setY(0);
+        
         }
     }
 
@@ -122,9 +123,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 
     private void draw() {
 
-        // Image doubleBuffer = createImage(WIDTH, HEIGHT);
-        // Graphics g2 = doubleBuffer.getGraphics();
-        Graphics g2 = getGraphics();
+        Image doubleBuffer = createImage(WIDTH, HEIGHT);
+        Graphics g2 = doubleBuffer.getGraphics();
         
         g2.drawImage(image, 0, 0, null);
         if(diamond.getX() == 0 && diamond.getY() == 0) {
@@ -132,11 +132,15 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
             g2.setColor(Color.WHITE);
             g2.setFont(new Font("Arial", Font.BOLD, 20));
             g2.drawString("Thanks for playing the demo game !", 38, 135);
-            g2.drawString("The extended version is available on", 30, 185);
+            g2.drawString("The extended version is available at", 30, 185);
             g2.drawString("TFI season 3", 140, 235);
             
         }
         g2.dispose();
+
+        Graphics g3 = getGraphics();
+        g3.drawImage(doubleBuffer, 0, 0, null);
+
         
     }
 
