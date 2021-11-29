@@ -26,3 +26,5 @@ TÓM TẮT và MỤC LỤC của Chương trình:
     Dùng để xây dựng thế giới từ dữ liệu của thư mục Maps.
 
 Author Chí Hiếu aka Elytrace
+
+*Note: Để chạy game vui lòng click file .jar
