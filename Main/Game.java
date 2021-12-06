@@ -14,7 +14,6 @@ public class Game {
 
         window.setVisible(true);
         window.setResizable(false);
-        // window.setIgnoreRepaint(true);
         
     }
 }

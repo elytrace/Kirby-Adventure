@@ -1,3 +1,7 @@
+/*
+    Tạo dựng thế giới
+*/
+
 package TileMap;
 
 import java.awt.Graphics2D;
@@ -11,6 +15,7 @@ import javax.imageio.ImageIO;
 import Main.GamePanel;
 
 public class TileMap {
+
     private int x;
     private int y;
 
@@ -39,10 +44,9 @@ public class TileMap {
             minX = GamePanel.WIDTH - mapWidth * tileSize;
             minY = GamePanel.HEIGHT - mapHeight * tileSize;
 
-            String delimiters = "\\s+";
             for(int row = 0; row < mapHeight; row++) {
                 String line = br.readLine();
-                String[] tokens = line.split(delimiters);
+                String[] tokens = line.split("\\s+");
                 for(int col = 0; col < mapWidth; col++) {
                     map[row][col] = Integer.parseInt(tokens[col]);
                 }
@@ -53,7 +57,7 @@ public class TileMap {
 
         }
     }
-    
+
     public void loadTiles(String s) {
         try {
             tileset = ImageIO.read(new File(s));
@@ -120,7 +124,7 @@ public class TileMap {
     }
 
     public void draw(Graphics2D g) {
-        for(int row = 0; row < mapHeight; row++) {
+        for(int row = 0; row < mapHeight; row++)
             for(int col = 0; col < mapWidth; col++) {
                 int rc = map[row][col];
 
@@ -134,7 +138,6 @@ public class TileMap {
                     null
                 );
             }
-        }
     }
 
 }

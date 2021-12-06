@@ -1,13 +1,10 @@
-/* 
-    Hiển thị viên kim cương
-*/
-
 package Entity;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.*;
 
 import javax.imageio.ImageIO;
 
@@ -25,12 +22,20 @@ public class Diamond {
 
     private BufferedImage[] diamond;
 
+    private ArrayList<Integer> diamondX;
+    private ArrayList<Integer> diamondY;
+
     private Animation animation;
+
+    private int numberDiamondEarn = 0;
 
     public Diamond(TileMap tm) {
         tileMap = tm;
         width = 22; 
         height = 22;
+
+        diamondX = new ArrayList<>();
+        diamondY = new ArrayList<>();
 
         try {
             diamond = new BufferedImage[1];
@@ -43,11 +48,28 @@ public class Diamond {
         animation = new Animation();
     }
     public Rectangle getRectangle() { 
-        return new Rectangle((int)x + 15, (int)y, 22, 22); 
+        return new Rectangle((int)x, (int)y, 10, 10); 
     }
 
     public void setX(int i) { x = i; }
     public void setY(int i) { y = i; }
+
+    public void addLocation(int x, int y) {
+        diamondX.add(x);
+        diamondY.add(y);
+    }
+
+    public void setLocation() {
+        Random rd = new Random();
+        int index = rd.nextInt(diamondX.size());
+        while(x == diamondX.get(index)) 
+            index = rd.nextInt(5);
+        x = diamondX.get(index);
+        y = diamondY.get(index);
+        numberDiamondEarn++;
+    }
+
+    public int getNumberDiamondEarn() { return numberDiamondEarn; }
 
     public double getX() { return x; }
     public double getY() { return y; }

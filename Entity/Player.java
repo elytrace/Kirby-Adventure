@@ -10,19 +10,26 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 public class Player {
+
+    // location của Kirby
     private double x;
     private double y;
+
+    // speed của Kirby
     private double dx;
     private double dy;
 
+    // hitbox của Kỉbry
     private int width;
     private int height;
 
+    // status của Kirby
     private boolean left;
     private boolean right;
     private boolean jumping;
     private boolean falling;
 
+    // thông số di chuyển của Kirby
     private double moveSpeed;
     private double maxSpeed;
     private double maxFallingSpeed;
@@ -30,14 +37,19 @@ public class Player {
     private double jumpStart;
     private double gravity;
 
+    // 
     private TileMap tileMap;
 
+    // 4 corners
     private boolean topLeft;
     private boolean topRight;
     private boolean bottomLeft;
     private boolean bottomRight;
 
+    // update chuyển động cho Kirby
     private Animation animation;
+
+    // các frames hiển thị trạng thái của Kirby
     private BufferedImage[] idleSprite;
     private BufferedImage[] walkingSprites;
     private BufferedImage[] jumpingSprites;
@@ -57,6 +69,8 @@ public class Player {
         gravity = 0.67;
 
         try {
+
+            // lấy hình ảnh từ sources 
             idleSprite = new BufferedImage[1];
             jumpingSprites = new BufferedImage[1];
             fallingSprites = new BufferedImage[1];
@@ -83,6 +97,7 @@ public class Player {
         animation = new Animation();
         facingLeft = left;
     }
+
     public Rectangle getRectangle() { 
         return new Rectangle((int)x, (int)y, width, height); 
     }
@@ -100,12 +115,17 @@ public class Player {
             jumping = true;
         }
     }
+
+    // kiểm tra xem các góc di chuyển có bị chặn ko
     private void calculateConrners(double x, double y) {
+
+        // tính toán hitbox của Kirby
         int leftTile = tileMap.getColTile((int)(x - width / 2));
         int rightTile = tileMap.getColTile((int)(x + width / 2) - 1);
         int topTile = tileMap.getRowTile((int)(y - height / 2));
         int bottomTile = tileMap.getRowTile((int)(y + height / 2) - 1);
         
+
         topLeft = tileMap.isBlocked(topTile, leftTile);
         topRight = tileMap.isBlocked(topTile, rightTile);
         bottomLeft = tileMap.isBlocked(bottomTile, leftTile);

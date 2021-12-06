@@ -1,11 +1,8 @@
-/* 
-    Hiển thị và quản lý các chuyển động
-*/
-
 package Entity;
 import java.awt.image.*;
 
 public class Animation {
+
     private BufferedImage[] frames;
     private int currentFrame;
     private long startTime;
@@ -24,6 +21,8 @@ public class Animation {
 
     public void update() {
         if(delay == -1) return;
+
+        // thời gian trôi qua = delay thì update frames của Kirby
         long elapsed = (System.nanoTime() - startTime) / 1000000;
         if(elapsed > delay) {
             currentFrame++;
