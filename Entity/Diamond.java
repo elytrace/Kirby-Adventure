@@ -39,7 +39,7 @@ public class Diamond {
 
         try {
             diamond = new BufferedImage[1];
-            diamond[0] = ImageIO.read(new File("Graphics/diamond.gif"));
+            diamond[0] = ImageIO.read(new File("Resources/Graphics/Diamond/diamond.gif"));
         }
         catch (Exception e) {
             e.printStackTrace();
