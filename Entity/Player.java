@@ -62,10 +62,10 @@ public class Player {
         height = 22;
 
         moveSpeed = 0.6;
-        maxSpeed = 4.2;
-        maxFallingSpeed = 12;
-        stopSpeed = 0.3;
-        jumpStart = -11.0;
+        maxSpeed = 6.6;
+        maxFallingSpeed = 14;
+        stopSpeed = 0.45;
+        jumpStart = -12;
         gravity = 0.67;
 
         try {
@@ -76,11 +76,11 @@ public class Player {
             fallingSprites = new BufferedImage[1];
             walkingSprites = new BufferedImage[6];
 
-            idleSprite[0] = ImageIO.read(new File("Graphics/Player/kirbyidle.gif"));
-            jumpingSprites[0] = ImageIO.read(new File("Graphics/Player/kirbyjump.gif"));
-            fallingSprites[0] = ImageIO.read(new File("Graphics/Player/kirbyfall.gif"));
+            idleSprite[0] = ImageIO.read(new File("Resources/Graphics/Player/kirbyidle.gif"));
+            jumpingSprites[0] = ImageIO.read(new File("Resources/Graphics/Player/kirbyjump.gif"));
+            fallingSprites[0] = ImageIO.read(new File("Resources/Graphics/Player/kirbyfall.gif"));
 
-            BufferedImage image = ImageIO.read(new File("graphics/player/kirbywalk.gif"));
+            BufferedImage image = ImageIO.read(new File("Resources/Graphics/Player/kirbywalk.gif"));
             for(int i = 0; i < walkingSprites.length; i++) {
                 walkingSprites[i] = image.getSubimage(
                     i * width + i,
@@ -258,6 +258,7 @@ public class Player {
     }
 
     public void draw(Graphics2D g) {
+        
         int tx = tileMap.getX();
         int ty = tileMap.getY();
 

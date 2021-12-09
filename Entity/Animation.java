@@ -8,7 +8,9 @@ public class Animation {
     private long startTime;
     private long delay;
     
-    public Animation() {}
+    public Animation() {
+        frames = new BufferedImage[6];
+    }
 
     public void setFrame(BufferedImage[] images) {
         frames = images;

@@ -12,15 +12,15 @@ import Main.GamePanel;
 import TileMap.TileMap;
 
 public class Diamond {
-    private double x;
-    private double y;
+    private int x;
+    private int y;
 
     private int width;
     private int height;
 
     private TileMap tileMap;
 
-    private BufferedImage[] diamond;
+    private BufferedImage[][] diamond;
 
     private ArrayList<Integer> diamondX;
     private ArrayList<Integer> diamondY;
@@ -38,8 +38,15 @@ public class Diamond {
         diamondY = new ArrayList<>();
 
         try {
-            diamond = new BufferedImage[1];
-            diamond[0] = ImageIO.read(new File("Graphics/diamond.gif"));
+            BufferedImage image = ImageIO.read(new File("Resources/Graphics/Diamond/diamond1.gif"));
+            int w = image.getWidth() / width;
+            int h = image.getHeight() / height;
+
+        diamond = new BufferedImage[h][w];
+            for(int i = 0; i < h; i++)
+                for(int j = 0; j < w; j++) {
+                    diamond[i][j] = image.getSubimage(j * width, i * height, width, height);
+                }
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -59,28 +66,40 @@ public class Diamond {
         diamondY.add(y);
     }
 
-    public void setLocation() {
-        Random rd = new Random();
-        int index = rd.nextInt(diamondX.size());
-        while(x == diamondX.get(index)) 
-            index = rd.nextInt(5);
-        x = diamondX.get(index);
-        y = diamondY.get(index);
-        numberDiamondEarn++;
+    public int getNumberDiamond() { return diamondX.size(); }
+
+    public void setLocation(int x, int y) {
+        setX(x);
+        setY(y);
+        if(x == 0 && y == 0) numberDiamondEarn++;
+    }
+
+    // public void setLocation() {
+    //     Random rd = new Random();
+    //     diamondX.remove(x);
+    //     diamondY.remove(y);
+    //     int index = rd.nextInt(diamondX.size());
+    //     x = diamondX.get(index);
+    //     y = diamondY.get(index);
+    //     numberDiamondEarn++;
+    // }
+
+    public int getX(int i) {
+        return diamondX.get(i);
+    }
+    public int getY(int i) {
+        return diamondY.get(i);
     }
 
     public int getNumberDiamondEarn() { return numberDiamondEarn; }
-
-    public double getX() { return x; }
-    public double getY() { return y; }
 
     public void update() {
 
         tileMap.setX((int)(GamePanel.WIDTH / 2 - x));
         tileMap.setY((int)(GamePanel.HEIGHT / 2 - y));
 
-        animation.setFrame(diamond);
-        animation.setDelay(-1);
+        animation.setFrame(diamond[0]);
+        animation.setDelay(500);
         animation.update();
     }
 

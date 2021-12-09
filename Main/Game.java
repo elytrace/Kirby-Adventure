@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 public class Game {
     public static void main(String[] args) {
         JFrame window = new JFrame("Kirby Adventure");
-        window.setIconImage(new ImageIcon("Graphics/Player/kirbyidle.gif").getImage());
+        window.setIconImage(new ImageIcon("Resources/Graphics/Player/kirbyidle.gif").getImage());
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setContentPane(new GamePanel());
         
