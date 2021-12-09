@@ -1,6 +1,8 @@
 # Kirby-Adventure
 My first and basic Java game
 
+*Note: cái README này cũ rích rồi nên đọc cũng đc ko đọc cũng đc
+
 ![alt text](https://github.com/Elytrace/Kirby-Adventure/blob/preview/demo2.png?raw=true)
 
 Giới thiệu sơ lược:
