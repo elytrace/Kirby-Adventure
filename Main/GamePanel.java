@@ -15,8 +15,8 @@ import Manager.Keys;
 
 
 public class GamePanel extends JPanel implements Runnable, KeyListener {
-    public static final int WIDTH = 640;
-    public static final int HEIGHT = 512;
+    public static final int WIDTH = 1920;
+    public static final int HEIGHT = 1080;
     
     private Thread thread;
     private boolean running;

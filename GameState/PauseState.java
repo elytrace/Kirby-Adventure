@@ -77,6 +77,7 @@ public class PauseState extends GameState {
             // g.drawString(options[0], GamePanel.WIDTH / 10 * 4 + 30, GamePanel.HEIGHT / 10 * 4);
             
             g.drawImage(diamond[0][1], GamePanel.WIDTH / 10 * 4 - 25, GamePanel.HEIGHT / 10 * 4 - 20, null);
+            g.drawImage(diamond[0], GamePanel.WIDTH / 10 * 4 - 25, GamePanel.HEIGHT / 10 * 4 - 20, null);
         }
         else if(currentOption == 1) {
             // g.setColor(Color.BLUE);
